@@ -87,6 +87,15 @@ namespace Serilog.Sinks.RabbitMQ
             if (!string.IsNullOrEmpty(_config.VHost)) connectionFactory.VirtualHost = _config.VHost;
             if (_config.Protocol != null) connectionFactory.Protocol = _config.Protocol;
 
+            //If set, configure ssl configuration
+            if(_config.SslConfiguration != null)
+            {
+                connectionFactory.Ssl.Enabled = _config.SslConfiguration.UseSsl;
+                connectionFactory.Ssl.ServerName = _config.SslConfiguration.ServerName; 
+                connectionFactory.Ssl.CertPath = _config.SslConfiguration.CertPath;
+                connectionFactory.Ssl.CertPassphrase = _config.SslConfiguration.CertPath;
+            }
+
             // return factory
             return connectionFactory;
         }

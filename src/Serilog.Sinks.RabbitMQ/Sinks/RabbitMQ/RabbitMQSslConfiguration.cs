@@ -18,23 +18,13 @@ using RabbitMQ.Client;
 namespace Serilog.Sinks.RabbitMQ.Sinks.RabbitMQ
 {
     /// <summary>
-    /// Configuration class for RabbitMqClient
+    /// Ssl Configuration class for RabbitMqClient
     /// </summary>
-    public class RabbitMQConfiguration
+    public class RabbitMQSslConfiguration
     {
-        public string Hostname = string.Empty;
-        public string Username = string.Empty;
-        public string Password = string.Empty;
-        public string Exchange = string.Empty;
-        public string ExchangeType = string.Empty;
-        public RabbitMQDeliveryMode DeliveryMode = RabbitMQDeliveryMode.NonDurable;
-        public string RouteKey = string.Empty;
-        public int Port;
-        public string VHost = string.Empty;
-        public IProtocol Protocol;
-        public ushort Heartbeat;
-        public int BatchPostingLimit;
-        public TimeSpan Period;
-        public RabbitMQSslConfiguration SslConfiguration { get; set; }
+        public bool UseSsl { get; set; }
+        public string ServerName { get; set; }
+        public string CertPath { get; set; }
+        public string CertPassPhrase { get; set; }
     }
 }
